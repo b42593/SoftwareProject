@@ -21,31 +21,37 @@ public class NewJFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public NewJFrame() {
-        initComponents();        
+        initComponents();
+        connectAndRetrieve();
     }
 
-    public static void connectAndRetrieve()
+    public  void connectAndRetrieve()
     {
         try
         {
             //connect
             Connection con = DriverManager.getConnection
-               ("jdbc:mysql://localhost:8084/booking", "root", "");
+               ("jdbc:mysql://localhost:3307/booking", "root", "");
 
             //make a query
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("Select booking.id, booking.date, booking.people, booking.tableNo, booking.time, customer.id from booking inner join customers on booking.cusId=customer.id");
+            ResultSet rs = stmt.executeQuery("Select booking.bookingID, booking.date, booking.people, booking.tableNO, booking.time, customer.name, customer.surname, customer.mobileNo from booking inner join customer on booking.customerID=customer.customerID");
             //ResultSet rs = stmt.executeQuery("Select * from customer");
 
+            DefaultTableModel model = (DefaultTableModel) bookingTable.getModel();
+            model.setRowCount(0); //empty the table
             //output result
             while (rs.next())
             {
-                System.out.println(rs.getInt(1) +"\t" +
-                                   rs.getString(2) +"\t" +
-                                   rs.getInt(3) +"\t" +
-                                   rs.getInt(4) +"\t" +
-                                   rs.getString(5) +"\t" +
-                                   rs.getInt(6));
+
+                model.addRow(new Object[]{rs.getInt(1),
+                                   rs.getString(2),
+                                   rs.getInt(3),
+                                   rs.getInt(4),
+                                   rs.getString(5),
+                                   rs.getString(6),
+                                   rs.getString(7), 
+                                   rs.getInt(8)});
             }
 
             //close connection
@@ -66,13 +72,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        bookingTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bookingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,7 +94,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(bookingTable);
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -179,9 +185,9 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable bookingTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
