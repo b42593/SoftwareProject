@@ -10,6 +10,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
+<<<<<<< HEAD
                 <exec.args>-classpath %classpath com.mycompany.project.BookingApp</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
@@ -40,6 +41,9 @@
             </goals>
             <properties>
                 <exec.args>-classpath %classpath com.mycompany.project.BookingApp</exec.args>
+=======
+                <exec.args>-classpath %classpath com.mycompany.project.NewJFrame</exec.args>
+>>>>>>> a960571d2061ecc3dc7e5578a3026b781d4629f1
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
