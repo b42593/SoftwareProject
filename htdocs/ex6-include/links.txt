@@ -1,5 +1,0 @@
-<?php include("menu.php"); ?>
-<h1>Homepage</h1>
-
-<p>This is my home page that uses a common menu to save me time when I add new pages to my website!</p>
-<?php include("footer.php"); ?>
