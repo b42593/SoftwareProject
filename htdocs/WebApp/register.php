@@ -5,6 +5,8 @@
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="shortcut icon" href="myIcon.ico" type="image/x-icon" />
 	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -37,7 +39,7 @@
                     $email = $_POST['email'];
                     
 					if (empty($name) || empty($surname) || empty($mobileNo) || empty($username) || empty($password) || empty($email)) {
-						echo "<div class=\"alert alert-warning\"> You need to enter both your first and last name</div>";
+						echo "<div class=\"alert alert-warning\"> Please Fill in the form</div>";
 					}
 					else {
 						$link = mysqli_connect("localhost", "root", "", "booking", 3307);
