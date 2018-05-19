@@ -17,7 +17,7 @@
 
 	</head>
 	<body>
-        <nav class="navbar navbar-inverse navbar-dark bg-dark p-3 mb-4">
+        <nav class="navbar navbar-inverse navbar-dark bg-dark p-4">
             <div class="container">
                 <a class="navbar-brand" href="home.php"><i class="fab fa-grunt text-danger" aria-hidden="true"></i> The Restaurant</a>
                 

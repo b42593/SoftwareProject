@@ -1,7 +1,7 @@
 <?php
 	session_start();
 		
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit_btn'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -13,7 +13,7 @@
             require("connect.php");
 
             $sql = "SELECT * FROM customer WHERE username='$username' AND password='$password'";
-            //$customerID = "SELECT customerID FROM customer WHERE username = '$username'";
+            
 
             $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 

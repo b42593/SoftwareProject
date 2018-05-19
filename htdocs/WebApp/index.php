@@ -20,69 +20,74 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 	</head>
 	<body>
-        <nav class="navbar navbar-inverse navbar-dark bg-dark p-3 mb-4">
+        <nav class="navbar navbar-inverse navbar-dark bg-dark p-3">
             <div class="container">
                 <p class="navbar-brand"><i class="fab fa-grunt text-danger" aria-hidden="true"></i> The Restaurant</p>
             </div>
         </nav>
+        <div style="height: 100%;">
+            <div style="background-image: url(http://localhost:8084/background/backgroundimage.jpg); background-size: 100% 100%; height:1000px;">
+                <div class="jumbotron container">
+                    <center><h1>Login</h1>
+                    <?php
+                        //check if ?login=-1.. if so, show the message
+                        if (isset($_GET['login']) && $_GET['login'] == -1) {
+                        echo "<div class=\"alert alert-warning\"> You need to enter information in all fields to proceed</div>";
+                        }
+                    ?>
 
-        <div class="jumbotron container">
-            <center><h1>Login</h1>
-            <?php
-                //check if ?login=-1.. if so, show the message
-                if (isset($_GET['login']) && $_GET['login'] == -1) {
-                echo "<div class=\"alert alert-warning\"> You need to enter information in all fields to proceed</div>";
-                }
-            ?>
-            
-            <?php
-                //check if ?login=0.. if so, show the message
-                if (isset($_GET['login']) && $_GET['login'] == 0) {
-                echo "<div class=\"alert alert-warning\">Oops! Incorrect Login!</div>";
-                }
-            ?>
-                
-            <?php
-                //check if ?logout=1.. if so, user got back from logout.php and therefore show the message
-                if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-                    echo "You have been logged out!<hr/>";
-                
-            ?>
-                
-            <a class="btn btn-info" href="index.php">Go Back to Login</a>
-            <?php
-                
-                }
+                    <?php
+                        //check if ?login=0.. if so, show the message
+                        if (isset($_GET['login']) && $_GET['login'] == 0) {
+                        echo "<div class=\"alert alert-warning\">Oops! Incorrect Login!</div>";
+                        }
+                    ?>
 
-                else {
-                    echo 'You are not logged in. Fill in this form to login:'
+                    <?php
+                        //check if ?logout=1.. if so, user got back from logout.php and therefore show the message
+                        if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+                            echo "You have been logged out!<hr/>";
 
                     ?>
 
-                    <form action="login.php" method="post">
-                        Username:
-                        <input type="text" name="username" />
-                        <br />
-                        <br />
-                        
-                        Password:
-                        <input type="password" name="password" />
-                        
-                        <br />
-                        <br />
-
-                        <input type="submit" name="submit" value="Login" />
-                    </form>
-                
-                    <br />
-                    <br />
-                    <a href="register.php">Create an Account</a>
-
-                    <!-- In your database, add username and password fields -->
-
+                    <a class="btn btn-info" href="index.php">Go Back to Login</a>
                     <?php
-                }
-            ?>
-            </center>
+
+                        }
+
+                        else {
+                            echo 'You are not logged in. Fill in this form to login:'
+
+                            ?>
+
+                            <form action="login.php" method="post">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="username">Login</label>
+                                        <input type="text" class="form-control" name="username" id="username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" id="password">
+                                    </div>
+                                </div>
+                                <button type="submit" name="submit_btn" class="btn btn-basic">Login</button>
+                            </form>
+
+                            <br />
+                            <br />
+                            <a href="register.php">Create an Account</a>
+
+                            <!-- In your database, add username and password fields -->
+
+                            <?php
+                        }
+                    ?>
+                    </center>
+                </div>
+                <?php include("footer.php"); ?>
+            </div>
         </div>
-    <?php include("footer.php"); ?>
+        
